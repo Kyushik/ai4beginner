@@ -28,6 +28,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = Net().to(device)
 opt = torch.optim.Adam(model.parameters(), lr=1e-3)
 
+print("학습 시작!!")
+
 for epoch in range(10):
     model.train()
     for x, y in train_loader:
@@ -38,7 +40,7 @@ for epoch in range(10):
         opt.step()
     print(f"Epoch {epoch}, Loss 값: {loss.item():.4f}")
 
-# 테스트 정확도
+# 테스트
 model.eval()
 correct = 0
 with torch.no_grad():
@@ -49,4 +51,6 @@ with torch.no_grad():
 print(f"테스트 정확도: {correct / len(test_loader.dataset):.4f}")
 
 # 모델 저장
-torch.save(model.state_dict(), 'mnist_model.pth')
+save_path = 'mnist_model.pth'
+torch.save(model.state_dict(), save_path)
+print(f"모델 저장 완료! 경로: {save_path}")

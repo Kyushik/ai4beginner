@@ -33,12 +33,6 @@ test_dataset = datasets.MNIST(root='./data', train=False, download=True, transfo
 idx = random.randint(0, len(test_dataset) - 1)
 image, label = test_dataset[idx]
 
-# 이미지 시각화
-plt.imshow(image.squeeze(), cmap='gray')
-plt.title(f"True Label: {label}")
-plt.axis('off')
-plt.show()
-
 # 모델 추론
 image_tensor = image.unsqueeze(0).to(device)  # (1, 1, 28, 28)
 with torch.no_grad():
@@ -50,3 +44,9 @@ with torch.no_grad():
 probs_np = probs.cpu().numpy().squeeze()
 
 print(f"예측 결과: {pred_class} (확률: {probs_np[pred_class]:.4f})")
+
+# 이미지 시각화
+plt.imshow(image.squeeze(), cmap='gray')
+plt.title(f"True Label: {label}")
+plt.axis('off')
+plt.show()
