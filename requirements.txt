@@ -1,3 +1,12 @@
 torch==2.7.0
 torchvision==0.22.0
 matplotlib==3.10.1
+uvicorn==0.34.2
+requests==2.32.3
+fastapi==0.115.12
+python-multipart==0.0.20
+transformers==4.51.3
+accelerate==1.6.0
+diffusers==0.33.1
+python-dotenv==1.1.0
+openai==1.77.0
